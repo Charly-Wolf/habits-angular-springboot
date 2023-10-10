@@ -35,6 +35,7 @@ public class ContentController {
         repository.save(content);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     public void update(@RequestBody Content content, @PathVariable Integer id) {
         if(!repository.existsById(id)) {
