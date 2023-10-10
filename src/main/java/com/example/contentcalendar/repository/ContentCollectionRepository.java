@@ -32,6 +32,10 @@ public class ContentCollectionRepository {
         contentList.add(content);
     }
 
+    public boolean existsById(Integer id) {
+        return contentList.stream().filter((c) -> c.equals(id)).count() == 1;
+    }
+
     @PostConstruct
     private void init() {
         Content content = new Content(1,
