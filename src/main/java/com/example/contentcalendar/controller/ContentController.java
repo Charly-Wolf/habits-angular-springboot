@@ -2,6 +2,7 @@ package com.example.contentcalendar.controller;
 
 import com.example.contentcalendar.model.Content;
 import com.example.contentcalendar.repository.ContentCollectionRepository;
+import com.example.contentcalendar.repository.ContentJdbcTemplateRepository;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ import java.util.Optional;
 public class ContentController {
 
     private final ContentCollectionRepository repository;
+
+    // H2 DATABASE:
+//    private final ContentJdbcTemplateRepository repository;
 
     public ContentController(ContentCollectionRepository repository) {
         this.repository = repository;
