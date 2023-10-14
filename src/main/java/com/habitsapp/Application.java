@@ -30,7 +30,7 @@ public class Application {
 			demoHabits.add(habit1);
 			Habit habit2 = new Habit(null,
 					"Learn Angular",
-					false,
+					true,
 					false);
 			demoHabits.add(habit2);
 			Habit habit3 = new Habit(null,
@@ -48,6 +48,11 @@ public class Application {
 					false,
 					false);
 			demoHabits.add(habit5);
+			Habit habit6 = new Habit(null,
+					"Old Habit",
+					false,
+					true);
+			demoHabits.add(habit6);
 
 			demoHabits.forEach(repository::save);
 		};
