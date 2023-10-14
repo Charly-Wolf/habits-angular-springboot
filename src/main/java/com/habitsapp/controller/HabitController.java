@@ -32,8 +32,9 @@ public class HabitController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    public void create(@Valid @RequestBody Habit habit) {
+    public Habit create(@Valid @RequestBody Habit habit) {
         repository.save(habit);
+        return habit;
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
