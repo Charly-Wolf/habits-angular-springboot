@@ -53,7 +53,7 @@ public class HabitController {
 
     @GetMapping("/filter/{keyword}")
     public List<Habit> findByTitle(@PathVariable String keyword) {
-        return repository.findAllByTextContains(keyword);
+        return repository.findAllByHabitTextContains(keyword);
     }
 
 //    @GetMapping("/filter/status/{status}")

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface HabitRepository extends ListCrudRepository<Habit, Integer> {
 
-    List<Habit> findAllByTextContains(String keyword);
+    List<Habit> findAllByHabitTextContains(String keyword);
 
 }
 

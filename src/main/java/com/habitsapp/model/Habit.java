@@ -9,7 +9,7 @@ public record Habit(
         @Id
         Integer id,
         @NotBlank
-        String text,
+        String habitText,
         Boolean isDone,
         Boolean isArchived
 ) {
