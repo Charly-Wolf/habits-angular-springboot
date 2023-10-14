@@ -1,4 +1,4 @@
-package com.example.contentcalendar.model;
+package com.habitsapp.model;
 
 public enum Type {
     ARTICLE,

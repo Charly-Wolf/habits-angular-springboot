@@ -1,8 +1,8 @@
-package com.example.contentcalendar.repository;
+package com.habitsapp.repository;
 
-import com.example.contentcalendar.model.Content;
-import com.example.contentcalendar.model.Status;
-import com.example.contentcalendar.model.Type;
+import com.habitsapp.model.Habit;
+import com.habitsapp.model.Status;
+import com.habitsapp.model.Type;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -20,8 +20,8 @@ public class ContentJdbcTemplateRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private static Content mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Content(rs.getInt("id"),
+    private static Habit mapRow(ResultSet rs, int rowNum) throws SQLException {
+        return new Habit(rs.getInt("id"),
                 rs.getString("title"),
                 rs.getString("desc"),
                 Status.valueOf("status"),
@@ -31,9 +31,9 @@ public class ContentJdbcTemplateRepository {
                 rs.getString("url"));
     }
 
-    public List<Content> getAllContent() {
+    public List<Habit> getAllContent() {
         String sql = "SELECT * FROM Content";
-        List<Content> contents = jdbcTemplate.query(sql, ContentJdbcTemplateRepository::mapRow);
+        List<Habit> contents = jdbcTemplate.query(sql, ContentJdbcTemplateRepository::mapRow);
         return contents;
     }
 
@@ -52,9 +52,9 @@ public class ContentJdbcTemplateRepository {
         jdbcTemplate.update(sql, id);
     }
 
-    public Content getContent(int id) {
+    public Habit getContent(int id) {
         String sql = "SELECT * FROM Content WHERE id=?";
-        Content content = jdbcTemplate.queryForObject(sql, new Object[]{id}, ContentJdbcTemplateRepository::mapRow);
+        Habit content = jdbcTemplate.queryForObject(sql, new Object[]{id}, ContentJdbcTemplateRepository::mapRow);
         return content;
     }
 }

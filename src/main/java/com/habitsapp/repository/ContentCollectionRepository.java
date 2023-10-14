@@ -1,8 +1,8 @@
-package com.example.contentcalendar.repository;
+package com.habitsapp.repository;
 
-import com.example.contentcalendar.model.Content;
-import com.example.contentcalendar.model.Status;
-import com.example.contentcalendar.model.Type;
+import com.habitsapp.model.Habit;
+import com.habitsapp.model.Status;
+import com.habitsapp.model.Type;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
@@ -14,21 +14,21 @@ import java.util.Optional;
 @Repository
 public class ContentCollectionRepository {
 
-    private final List<Content> contentList = new ArrayList<>();
+    private final List<Habit> contentList = new ArrayList<>();
 
     public ContentCollectionRepository() {
 
     }
 
-    public  List<Content> findAll() {
+    public  List<Habit> findAll() {
         return contentList;
     }
 
-    public Optional<Content> findById(Integer id) {
+    public Optional<Habit> findById(Integer id) {
         return contentList.stream().filter(c -> c.id().equals(id)).findFirst();
     }
 
-    public void save(Content content) {
+    public void save(Habit content) {
         contentList.removeIf(c -> c.id().equals(content.id()));
         contentList.add(content);
     }
@@ -42,7 +42,7 @@ public class ContentCollectionRepository {
     }
     @PostConstruct
     private void init() {
-        Content content = new Content(1,
+        Habit content = new Habit(1,
                 "My First Blog Post",
                 "My first blog post",
                 Status.IDEA,

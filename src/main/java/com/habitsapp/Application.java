@@ -1,9 +1,9 @@
-package com.example.contentcalendar;
+package com.habitsapp;
 
-import com.example.contentcalendar.model.Content;
-import com.example.contentcalendar.model.Status;
-import com.example.contentcalendar.model.Type;
-import com.example.contentcalendar.repository.ContentRepository;
+import com.habitsapp.model.Habit;
+import com.habitsapp.model.Status;
+import com.habitsapp.model.Type;
+import com.habitsapp.repository.ContentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +22,7 @@ public class Application {
 	CommandLineRunner commandLineRunner(ContentRepository repository) {
 		return args -> {
 			// insert some data into the database
-			Content content = new Content(null,
+			Habit content = new Habit(null,
 					"Hello, testing initial data in DB",
 					"All about Spring Boot...",
 					Status.IDEA,

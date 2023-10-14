@@ -1,4 +1,4 @@
-package com.example.contentcalendar.config;
+package com.habitsapp.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
