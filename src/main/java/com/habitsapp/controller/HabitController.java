@@ -1,8 +1,7 @@
 package com.habitsapp.controller;
 
 import com.habitsapp.model.Habit;
-import com.habitsapp.model.Status;
-import com.habitsapp.repository.ContentRepository;
+import com.habitsapp.repository.HabitRepository;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +10,13 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/content")
+@RequestMapping("/api/habit")
 @CrossOrigin
-public class ContentController {
+public class HabitController {
 
-    private final ContentRepository repository;
+    private final HabitRepository repository;
 
-    public ContentController(ContentRepository repository) {
+    public HabitController(HabitRepository repository) {
         this.repository = repository;
     }
 
@@ -33,17 +32,17 @@ public class ContentController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    public void create(@Valid @RequestBody Habit content) {
-        repository.save(content);
+    public void create(@Valid @RequestBody Habit habit) {
+        repository.save(habit);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    public void update(@RequestBody Habit content, @PathVariable Integer id) {
+    public void update(@RequestBody Habit habit, @PathVariable Integer id) {
         if(!repository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Habit not found!");
         }
-        repository.save(content);
+        repository.save(habit);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -54,12 +53,12 @@ public class ContentController {
 
     @GetMapping("/filter/{keyword}")
     public List<Habit> findByTitle(@PathVariable String keyword) {
-        return repository.findAllByTitleContains(keyword);
+        return repository.findAllByTextContains(keyword);
     }
 
-    @GetMapping("/filter/status/{status}")
-    public List<Habit> findByStatus(@PathVariable Status status) {
-        return repository.listByStatus(status);
-    }
+//    @GetMapping("/filter/status/{status}")
+//    public List<Habit> findByStatus(@PathVariable Status status) {
+//        return repository.listByStatus(status);
+//    }
 
 }

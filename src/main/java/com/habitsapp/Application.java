@@ -1,15 +1,14 @@
 package com.habitsapp;
 
 import com.habitsapp.model.Habit;
-import com.habitsapp.model.Status;
-import com.habitsapp.model.Type;
-import com.habitsapp.repository.ContentRepository;
+//import com.habitsapp.repository.HabitJdbcTemplateRepository;
+import com.habitsapp.repository.HabitRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class Application {
@@ -19,19 +18,38 @@ public class Application {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(ContentRepository repository) {
+	CommandLineRunner commandLineRunner(HabitRepository repository) {
 		return args -> {
-			// insert some data into the database
-			Habit content = new Habit(null,
-					"Hello, testing initial data in DB",
-					"All about Spring Boot...",
-					Status.IDEA,
-					Type.VIDEO,
-					LocalDateTime.now(),
-					null,
-					"");
+			// DB Mock Data
+			ArrayList<Habit> demoHabits = new ArrayList<Habit>();
 
-			repository.save(content);
+			Habit habit1 = new Habit(null,
+					"Learn Spring Boot",
+					false,
+					false);
+			demoHabits.add(habit1);
+			Habit habit2 = new Habit(null,
+					"Learn Angular",
+					false,
+					false);
+			demoHabits.add(habit2);
+			Habit habit3 = new Habit(null,
+					"Workout",
+					false,
+					false);
+			demoHabits.add(habit3);
+			Habit habit4 = new Habit(null,
+					"Read a book",
+					false,
+					false);
+			demoHabits.add(habit4);
+			Habit habit5 = new Habit(null,
+					"Meditate",
+					false,
+					false);
+			demoHabits.add(habit5);
+
+			demoHabits.forEach(repository::save);
 		};
 	}
 

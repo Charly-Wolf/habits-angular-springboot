@@ -9,12 +9,8 @@ public record Habit(
         @Id
         Integer id,
         @NotBlank
-        String title,
-        String desc,
-        Status status,
-        Type contentType,
-        LocalDateTime dateCreated,
-        LocalDateTime dateUpdated,
-        String url
+        String text,
+        Boolean isDone,
+        Boolean isArchived
 ) {
 }
