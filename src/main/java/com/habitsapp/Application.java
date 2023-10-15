@@ -1,7 +1,6 @@
 package com.habitsapp;
 
 import com.habitsapp.model.Habit;
-//import com.habitsapp.repository.HabitJdbcTemplateRepository;
 import com.habitsapp.repository.HabitRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
